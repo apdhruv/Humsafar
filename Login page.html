@@ -19,7 +19,7 @@
         border-radius: 50%;
     }
     form{
-        height: 450px;
+        height: 550px;
         width: 430px;
         background-color: rgba(255,255,255,0.07);
         position: absolute;
@@ -94,6 +94,14 @@
         cursor: pointer;
         transition: ease all 0.5s;
     }
+    .sign{
+        background-color: rgb(30, 45, 85); 
+        color: #ffffff;
+    }
+    .sign:hover{
+        background-color: #ffffff; 
+        color: rgb(30, 45, 85);
+    }
     </style>
 </head>
 <body>
@@ -111,7 +119,8 @@
 
         <label for="password">Password</label>
         <input type="password" placeholder="Minimum 6 characters" id="password">
-        <button>Sign In</button>
+        <button>Log In</button>
+        <a href="Sign up.html"><button class="sign">Sign up</button></a>
     </form>
 </body>
 </html>
