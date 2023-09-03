@@ -6,7 +6,7 @@
     }
     .background{
         width: 430px;
-        height: 520px;
+        height: 620px;
         position: absolute;
         transform: translate(-50%,-50%);
         left: 50%;
@@ -19,7 +19,7 @@
         border-radius: 50%;
     }
     form{
-        height: 450px;
+        height: 650px;
         width: 430px;
         background-color: rgba(255,255,255,0.07);
         position: absolute;
@@ -102,15 +102,22 @@
         <div class="shape"></div>
     </div>
     <form>
-        <h3>Welcome Back!
-            <span>Login to your account.</span>
+        <h3>Welcome to Musafir!
+            <span>Create your account.</span>
         </h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Enter yor username" id="username">
+        <input type="text" placeholder="Enter your username" id="username">
 
         <label for="password">Password</label>
         <input type="password" placeholder="Minimum 6 characters" id="password">
+
+        <label for="age">Age</label>
+        <input type="date" name="age" id="age">
+
+        <label for="phone">Phone number</label>
+        <input type="number" name="phone" id="phone" placeholder="Enter your phone number">
+
         <button>Sign In</button>
     </form>
 </body>
