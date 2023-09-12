@@ -1,71 +1,45 @@
 <html>
 <head>
 	<title>intercity</title>
-    <script>const firstSelection = document.getElementById('first-selection');
-        const secondSelection = document.getElementById('second-selection');
-        const selectButton = document.getElementById('select-button');
-        const resultParagraph = document.getElementById('result');
-        
-        const optionsByCategory = {
-            From: ['hyderabad','chennai','kolkata'],
-            To: ['hyderabad','chennai','kolkata'],
-        }
-        function updatefirstSelection() {
-            const selectedCategory = firstSelection.value;
-            const options = optionsByCategory[selectedCategory];
-        }
-        function updateSecondSelection() {
-            const selectedCategory = SecondSelection.value;
-            const options = optionsByCategory[selectedCategory];
-        }
-        if (options) {
-            options.forEach(optionText => {
-                const option = document.createElement('option');
-                option.text = optionText;
-                secondSelection.add(option);
-            });
-        }
-        // Function to handle the "Select" button click
-        function handleSelectButtonClick() {
-            const selectedCategory = firstSelection.value;
-            const selectedItem = secondSelection.value;
-        
-            if (selectedCategory && selectedItem) {
-                resultParagraph.textContent = 'You selected: ${selectedItem} in the ${selectedCategory} category.';
-            } else {
-                resultParagraph.textContent = 'Please make selections in both dropdowns.';
-            }
-        }
-        firstSelection.addEventListener('change', updateSecondSelection);
-        selectButton.addEventListener('click', handleSelectButtonClick);
-        updateSecondSelection();
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
         </script>
         <style>
-           
-        p,li{color: azure; font: size 20px;font-family: Arial, Helvetica, sans-serif;}
+            p{color: azure; font: size 20px;font-family: Arial, Helvetica, sans-serif;}
+            li{color: azure; font: size 20px;font-family: Arial, Helvetica, sans-serif;}
+
+            .maindiv{
+                text-align: center;
+    border: 1px solid black;
+    width: 277px;
+    height: 126px;
+    background-color: white;
+    margin: 0 auto;
+            }
         </style>
 </head>
 <body bgcolor="blueviolet">
 <form>
-<input type="select" id="city" class="firstclass">
-<select>
-    <option value="from">hyderabad</option>
-    <option value="from">chennai</option>
-    <option value="from">kolkata</option>
-    <option value="from">Mumbai</option>
+    <div class="maindiv">
+<select id="slFrom">
+    <option value="hyderabad">hyderabad</option>
+    <option value="chennai">chennai</option>
+    <option value="kolkata">kolkata</option>
+    <option value="Mumbai">Mumbai</option>
 </select><br>
-<input type="select" id="city" class="secondclass">
-<select>
-    <option value="To">hyderabad</option>
-    <option value="To">chennai</option>
-    <option value="To">kolkata</option>
-    <option value="To">Mumbai</option>
+<select id="slTo" >
+    <option value="hyderabad">hyderabad</option>
+    <option value="chennai">chennai</option>
+    <option value="kolkata">kolkata</option>
+    <option value="Mumbai">Mumbai</option>
 </select>
-<input type="submit" name="submit">
+<button type="button" id="btnSubmit">Submit</button>
+</div>
+<div id="Mumbai" style="display:none;">
 <h1>Mumbai</h1><ol>
 <p>Welcome to Mumbai, where dreams meet reality
  in a vibrant tapestry of colors, cultures, and contrasts! Nestled on the Arabian Sea's edge,
- this city is a dazzling gem in India's crown, beckoning you to immerse yourself in its irresistible charm.<br></p>
+ this city is a dazzling gem in India's crown, beckoning you to immerse yourself in its irresistible charm.<br>
     
 <li> Gateway to Dreams: As you stroll along the iconic Marine Drive promenade, you'll be greeted by the twinkling city lights
 mirroring the starry sky, earning it the nickname "Queen's Necklace." It's the perfect place to reflect on the dreams that Mumbai is famous for making come true.</li><br>
@@ -88,15 +62,19 @@ Or take a boat ride to the nearby Elephanta Island to witness the mesmerizing su
 <li>Local Warmth: Mumbai's people, often referred to as "Mumbaikars," are known for their warmth and resilience.
 Strike up conversations with locals, and you'll gain a deeper understanding of the city's heart.</li><br>
     
-<p>In Mumbai, every street is a story waiting to be uncovered, every meal is a culinary adventure, and every smile you encounter is a reminder of the city's 
+In Mumbai, every street is a story waiting to be uncovered, every meal is a culinary adventure, and every smile you encounter is a reminder of the city's 
 unwavering spirit. So, pack your bags, and get ready to be enchanted by the city of dreams. Mumbai is not just a destination;
 it's an experience you'll treasure forever.<br></ol>
 </p>
+
+</div>
+
+<div id="chennai" style="display:none;">
 <h2>Chennai</h2>
 <p>
     Welcome to Chennai, a vibrant tapestry of tradition and modernity, where history dances with the future, and the sea whispers secrets to the city.
     Nestled on the Coromandel Coast of the Bay of Bengal, Chennai is a treasure trove of experiences waiting to be discovered. As you step into this captivating city, you'll be greeted by a symphony of colors, aromas, and sounds that will awaken your senses.<br>
-   </p><ol> 
+   <ol> 
     <li> Marina Magic: Begin your journey at the iconic Marina Beach, where the golden sands stretch as far as the eye can see, and the waves embrace you like an old friend. Here, you can witness the breathtaking sunrise, a daily spectacle that paints the sky in hues of orange and pink, making it a photographer's dream.</li><br>
     
     <li>Historical Havens: Chennai's rich history is etched in its architecture. Explore the magnificent temples like Kapaleeshwarar and Parthasarathy, where spirituality and artistry blend seamlessly. The Santhome Cathedral, a stunning Gothic masterpiece, stands as a testament to the city's colonial past.</li><br>
@@ -110,13 +88,15 @@ it's an experience you'll treasure forever.<br></ol>
     <li>Gardens of Serenity: Escape the urban hustle at the Theosophical Society's lush Adyar gardens, where you can find peace amidst nature. The Arignar Anna Zoological Park offers a chance to get up close with exotic wildlife.</li><br>
     
     <li>Incredible Hospitality: What truly sets Chennai apart is the warmth of its people. The locals, known for their hospitality, will make you feel like a cherished guest, not just a tourist.</li><br>
-</ol>    
-   <p> So, whether you're strolling along the beach at sunset, savoring aromatic spices, or immersing yourself in a rich tapestry of art and culture, Chennai promises to enchant you at every turn. This city is more than just a destination; it's an unforgettable experience waiting to be embraced. Welcome to Chennai, where every moment is a melody, and every corner is a canvas of creativity.
-</p>
+    
+    So, whether you're strolling along the beach at sunset, savoring aromatic spices, or immersing yourself in a rich tapestry of art and culture, Chennai promises to enchant you at every turn. This city is more than just a destination; it's an unforgettable experience waiting to be embraced. Welcome to Chennai, where every moment is a melody, and every corner is a canvas of creativity.<br>
+    </ol></p>
+    </div>
+    <div id="kolkata" style="display:none;">
 <h3>Kolkata</h3>
 <p>
     Welcome to Kolkata, where history dances with modernity in perfect harmony, creating a city like no other! Nestled in the eastern part of India, Kolkata is a treasure trove of experiences waiting to be discovered by intrepid travelers like you.<br>
-</p><ol>
+
 <li>🌆 City of Joy: Kolkata is often referred to as the "City of Joy" for its warm and welcoming atmosphere. The locals, known as Kolkatans, embody the spirit of the city, radiating enthusiasm and zest for life that's contagious.</li><br>
 
 <li>🏛️ Heritage Havens: Immerse yourself in the rich tapestry of history as you explore architectural wonders like the Victoria Memorial, Howrah Bridge, and the grandeur of colonial-era buildings. The city's historic charm is a testament to its enduring legacy.</li><br>
@@ -132,11 +112,22 @@ it's an experience you'll treasure forever.<br></ol>
 <li>🌅 Sunset by the Ganges: A visit to Kolkata is incomplete without witnessing the breathtaking sunset along the banks of the Ganges River. Take a boat ride and watch as the sun sets the sky ablaze with hues of orange and gold.<br>
 <li>🎭 Theatrical Marvels: Kolkata's love for the arts extends to its theaters. Catch a live performance at the iconic Minerva Theatre or Academy of Fine Arts, where the city's passion for drama comes alive.</li><br>
 
-<li>🌇 A City of Contrasts: Kolkata seamlessly blends the old and the new, the traditional and the contemporary. Witness the juxtaposition of ancient temples alongside modern skyscrapers, a testament to its dynamic character.<br>
-</li>
-</ol>
-<p>Kolkata is a city that will leave an indelible mark on your heart. With its warmth, culture, and captivating history, it's a place where every moment is a celebration of life. So, embrace the City of Joy and let its infectious energy sweep you off your feet. Kolkata awaits your arrival with open arms!<br>
+<li>🌇 A City of Contrasts: Kolkata seamlessly blends the old and the new, the traditional and the contemporary. Witness the juxtaposition of ancient temples alongside modern skyscrapers, a testament to its dynamic character.</li><br>
+
+Kolkata is a city that will leave an indelible mark on your heart. With its warmth, culture, and captivating history, it's a place where every moment is a celebration of life. So, embrace the City of Joy and let its infectious energy sweep you off your feet. Kolkata awaits your arrival with open arms!</li><br>
 </p>
+    </div>
 </form>
+
+<script>
+$('#btnSubmit').click(function(){
+$('#kolkata,#chennai,#Mumbai').hide();
+    var toId=$('#slTo').val();
+    $('#'+toId).show(); 
+
+
+});
+
+</script>
 </body>
 </html>
